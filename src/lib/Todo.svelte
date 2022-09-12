@@ -5,7 +5,7 @@
   export let name;
   export let description;
 
-  let progressValue = 0;
+  let progressValue = progress;
   
   function addProgress(){
     progressValue+=0.25;
@@ -48,8 +48,12 @@
     background-color: #1f1f1f;
   }
 
+  h3{
+    margin-bottom: 0;
+  }
+
   p{
-    padding: 1em
+    padding: .5em 1em 1em 1em
   }
 
   button{

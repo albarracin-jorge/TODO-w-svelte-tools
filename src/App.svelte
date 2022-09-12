@@ -5,8 +5,11 @@
   import {data} from './store'
   import {progress} from './writable'
 
-  let progressValue = progress;
-  
+
+
+  const progressChange = tweened(progressValue, {
+    duration: 200
+  });
 </script>
 
 <main>
