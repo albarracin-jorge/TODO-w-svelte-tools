@@ -1,3 +1,7 @@
 import {writable} from 'svelte/store'
+import {data} from './store'
 
-export let progress = writable(0);
+const average = 1 / data.length;
+
+export const taskAverage = writable(average);
+export const progress = writable(0);

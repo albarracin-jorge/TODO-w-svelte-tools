@@ -4,18 +4,12 @@
   import Todo from './lib/Todo.svelte'
   import {data} from './store'
   import {progress} from './writable'
-
-
-
-  const progressChange = tweened(progressValue, {
-    duration: 200
-  });
 </script>
 
 <main>
   <header>
     <h1>TODOS</h1>
-    <progress value={$progressValue}></progress>
+    <progress value={$progress}></progress>
   </header>
   <section>
     {#each data as value}

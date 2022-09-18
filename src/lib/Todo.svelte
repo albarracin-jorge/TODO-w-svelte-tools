@@ -1,40 +1,27 @@
 <script>
-  import {tweened} from 'svelte/motion'
-  import {progress} from '../writable'
+  import {progress, taskAverage} from '../writable'
 
   export let name;
   export let description;
 
   let progressValue = progress;
-  
-  function addProgress(){
-    progressValue+=0.25;
-    if(progressValue > 1) progressValue = 1;
-    console.log(progressValue); 
-    return progressValue;
+
+  const addProgress = ()=>{
+    $progress += $taskAverage;
+    if($progress > 1) $progress = 1;
   }
 
-  function restProgress(){
-    progressValue-=0.25;
-    if(progressValue < 0) progressValue = 0;
-    console.log(progressValue); 
-    return progressValue;
+  const restProgress = ()=>{
+    $progress -= $taskAverage;
+    if($progress < 0) $progress = 0;
   }
-
-  const progressChange = tweened(progressValue, {
-    duration: 200
-  });
 </script>
 
 <div>
   <h3>{name}</h3>
   <p>{description}</p>
-  <button on:click={()=>{
-    progress.set(addProgress())
-  }}>Done</button>
-  <button on:click={()=>{
-    progress.set(restProgress())
-  }}>Delete</button>
+  <button on:click={addProgress}>Done</button>
+  <button on:click={restProgress}>Delete</button>
 </div>
 
 <style>
